@@ -1,4 +1,4 @@
-module ColorSchemeRb
+module VimColorScheme
   class Hex2Term
     # This colour lookup table is taken from the following gist:
     # https://gist.github.com/719710
@@ -291,14 +291,14 @@ module ColorSchemeRb
     end
 
     # Takes a short color value (e.g. between 0 and 255) and returns the
-    # hexadecimal equivalent without a leading hash.
+    # hexadecimal equivalent with a leading hash.
     #
     # Example:
     #
     #   short2rb(231)
-    #   # => 'ffffff'
+    #   # => '#ffffff'
     def self.short2rb short
-      SCLUT[short.to_s]
+      '#' + SCLUT[short.to_s]
     end
 
     # Takes an RGB hex value, with or without the leading hash, and converts it

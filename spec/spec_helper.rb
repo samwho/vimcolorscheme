@@ -1,1 +1,1 @@
-require File.dirname(__FILE__) + '/../lib/colorschemerb.rb'
+require File.dirname(__FILE__) + '/../lib/vimcolorscheme.rb'
