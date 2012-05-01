@@ -3,6 +3,8 @@ schemes difficult to get working in both terminal and graphical interfaces, this
 DSL tries to remedy that by, for example, automatically filling in the value of
 guibg by looking at ctermbg.
 
+[![Build Status](https://secure.travis-ci.org/samwho/vimcolorscheme.png?branch=master)](http://travis-ci.org/samwho/vimcolorscheme)
+
 # Installation
 
 Installation is standard for a Ruby gem:
