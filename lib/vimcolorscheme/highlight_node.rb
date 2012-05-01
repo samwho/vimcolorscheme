@@ -58,6 +58,8 @@ module VimColorScheme
     # :reverse and returns the appropriate string.
     def attr_to_s attribute
       case attribute
+      when Array
+        attribute.map { |a| attr_to_s(a) }.join(',')
       when :none
         'NONE'
       when :reverse
@@ -71,8 +73,8 @@ module VimColorScheme
     # The following are just default accessors for the various members of the
     # options hash on this object.
     #
-    def gui new_gui = nil
-      @options[:gui] = new_gui if new_gui
+    def gui *args
+      @options[:gui] = args if args.length > 0
       @options[:gui]
     end
 
@@ -86,8 +88,8 @@ module VimColorScheme
       @options[:guifg]
     end
 
-    def cterm new_cterm = nil
-      @options[:cterm] = new_cterm if new_cterm
+    def cterm *args
+      @options[:cterm] = args if args.length > 0
       @options[:cterm]
     end
 
