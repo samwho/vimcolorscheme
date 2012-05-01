@@ -1,5 +1,5 @@
 module VimColorScheme
-  class Node
+  class HighlightNode
     def initialize name, options = {}
       @name    = name
       @options = options

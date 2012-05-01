@@ -6,4 +6,4 @@ module VimColorScheme
 end
 
 require 'vimcolorscheme/hex2term'
-require 'vimcolorscheme/node'
+require 'vimcolorscheme/highlight_node'

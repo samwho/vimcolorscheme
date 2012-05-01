@@ -1,22 +1,22 @@
 require 'spec_helper'
 
-describe VimColorScheme::Node do
+describe VimColorScheme::HighlightNode do
   let :guinode do
-    temp = VimColorScheme::Node.new :Normal
+    temp = VimColorScheme::HighlightNode.new :Normal
     temp.guifg '#ffffff'
     temp.guibg '#000000'
     temp.to_s
   end
 
   let :ctermnode do
-    temp = VimColorScheme::Node.new :Normal
+    temp = VimColorScheme::HighlightNode.new :Normal
     temp.ctermfg '34'
     temp.ctermbg '35'
     temp.to_s
   end
 
   let :bothnode do
-    temp = VimColorScheme::Node.new :Normal
+    temp = VimColorScheme::HighlightNode.new :Normal
     temp.ctermfg '34'
     temp.ctermbg '35'
     temp.guifg '#ffffff'
@@ -25,7 +25,7 @@ describe VimColorScheme::Node do
   end
 
   let :reversenode do
-    temp = VimColorScheme::Node.new :Normal
+    temp = VimColorScheme::HighlightNode.new :Normal
     temp.gui :reverse
     temp.to_s
   end
