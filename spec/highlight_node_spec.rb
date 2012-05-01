@@ -5,6 +5,7 @@ describe VimColorScheme::HighlightNode do
     temp = VimColorScheme::HighlightNode.new :Normal
     temp.guifg '#ffffff'
     temp.guibg '#000000'
+    temp.gui   :bold
     temp.to_s
   end
 
@@ -12,6 +13,8 @@ describe VimColorScheme::HighlightNode do
     temp = VimColorScheme::HighlightNode.new :Normal
     temp.ctermfg '34'
     temp.ctermbg '35'
+    temp.cterm   :italic
+    temp.gui     :none
     temp.to_s
   end
 
@@ -58,7 +61,17 @@ describe VimColorScheme::HighlightNode do
     bothnode.should include('gui=NONE')
   end
 
-  it 'should correctly conver :reverse values to REVERSE' do
+  it 'should correctly convert :reverse values to REVERSE' do
     reversenode.should include('gui=REVERSE')
+  end
+
+  it 'should set gui to bold and correctly mirror that in cterm' do
+    guinode.should include('gui=bold')
+    guinode.should include('cterm=bold')
+  end
+
+  it 'should set not mirror gui and cterm if coth are set' do
+    ctermnode.should include('cterm=italic')
+    ctermnode.should include('gui=NONE')
   end
 end
