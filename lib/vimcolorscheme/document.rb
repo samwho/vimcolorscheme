@@ -24,6 +24,54 @@ module VimColorScheme
       @nodes.last.instance_eval(&block)
     end
 
+    # Creates a comment node in the document. It takes a single argument, which
+    # is the string that will be in the comment. You don't need to include the "
+    # comment character in the string, that will be done for you when the vim
+    # color scheme document is created.
+    #
+    # Example:
+    #
+    #   comment "This is a comment!"
+    #
+    # Alternately, you can create a comment by returning a string from a block:
+    #
+    #   comment do
+    #     "This is a comment!"
+    #   end
+    #
+    # Both examples above yield the same result.
+    def comment string = nil
+      if block_given?
+        @nodes << CommentNode.new(yield)
+      else
+        @nodes << CommentNode.new(string)
+      end
+    end
+
+    # Creates a raw node in the current document. Raw nodes are inteded for
+    # users that want to insert code into their vim color scheme that we don't
+    # currently have a native implementation for.
+    #
+    # Example:
+    #
+    #   raw "let g:my_var = 'variable!'"
+    #
+    # You can also give raw a block that returns a string:
+    #
+    #   raw do
+    #     "let g:my_var = 'variable!'"
+    #   end
+    #
+    # The two examples above are functionally the same. The strings that are
+    # passed to raw will be printed as-is into the vim color scheme file.
+    def raw string = nil
+      if block_given?
+        @nodes << RawNode.new(yield)
+      else
+        @nodes << RawNode.new(string)
+      end
+    end
+
     # Saves this color scheme to a file. If the file exists, the user will be
     # prompted as to whether or not they want to overwrite the file.
     def save path

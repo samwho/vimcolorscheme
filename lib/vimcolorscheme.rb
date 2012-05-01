@@ -7,5 +7,7 @@ end
 
 require 'vimcolorscheme/hex2term'
 require 'vimcolorscheme/highlight_node'
+require 'vimcolorscheme/comment_node'
+require 'vimcolorscheme/raw_node'
 require 'vimcolorscheme/document'
 require 'vimcolorscheme/base'

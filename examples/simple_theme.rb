@@ -12,6 +12,7 @@ VimColorScheme.new :simple_theme, :dark do
     ctermbg :none
   end
 
+  comment "Highlighting for a constant in Ruby."
   highlight :rubyConstant do
     guifg '#ff0000'
     gui   :bold

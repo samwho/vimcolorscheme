@@ -4,10 +4,21 @@ require 'fileutils'
 describe VimColorScheme::Base do
   let :test_scheme do
     VimColorScheme.new :test_scheme, :dark do
+      comment "This is a comment!"
+      comment do
+        "This is a block comment!"
+      end
+
       highlight :Normal do
         ctermfg '231'
         ctermbg '31'
         cterm   :bold, :underline
+      end
+
+      raw "Some raw input."
+
+      raw do
+        "Some raw block input."
       end
     end.to_s
   end
@@ -57,5 +68,21 @@ describe VimColorScheme::Base do
     File.open(test_scheme_path) do |file|
       file.read.should == test_scheme_object.to_s
     end
+  end
+
+  it 'should render comments' do
+    test_scheme.should include('" This is a comment!' + "\n")
+  end
+
+  it 'should render block comments' do
+    test_scheme.should include('" This is a block comment!' + "\n")
+  end
+
+  it 'should render raw' do
+    test_scheme.should include("Some raw input.\n")
+  end
+
+  it 'should render raw blocks' do
+    test_scheme.should include("Some raw block input.\n")
   end
 end
