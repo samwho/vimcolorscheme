@@ -9,7 +9,7 @@ describe VimColorScheme::Hex2Term do
 
   it "correctly convert hex colors to term colors" do
     convert('123456').should  == '23'
-    convert('ffffff').should  == '231'
+    convert('00af00').should  == '34'
     convert('odadd6').should  == '38'
 
     convert('231').should     == '#ffffff'
@@ -19,7 +19,7 @@ describe VimColorScheme::Hex2Term do
 
   it "correctly handle hex number with leading hashes" do
     convert('#123456').should == '23'
-    convert('#ffffff').should == '231'
+    convert('#00af00').should == '34'
     convert('#odadd6').should == '38'
   end
 end

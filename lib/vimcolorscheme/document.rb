@@ -113,6 +113,20 @@ module VimColorScheme
     def to_s
       result  = ''
 
+      # If the document starts with comments, we want to print those at the top.
+      top_comments = @nodes.take_while { |node| node.is_a? CommentNode }
+      top_comments.each do |comment|
+        result += comment.to_s
+      end
+
+      # Vanity new lines ftw.
+      result += "\n"
+
+      # Pop the top comments off the node list.
+      top_comments.length.times do
+        @nodes.shift
+      end
+
       if @lightordark == :dark
         result += "set background=dark\n\n"
       else

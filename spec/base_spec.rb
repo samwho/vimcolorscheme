@@ -78,6 +78,10 @@ describe VimColorScheme::Base do
     test_scheme.should include('" This is a block comment!' + "\n")
   end
 
+  it 'should render comments at the top... at the top' do
+    test_scheme.start_with?('" This is a comment!' + "\n").should be_true
+  end
+
   it 'should render raw' do
     test_scheme.should include("Some raw input.\n")
   end

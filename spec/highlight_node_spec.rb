@@ -3,8 +3,8 @@ require 'spec_helper'
 describe VimColorScheme::HighlightNode do
   let :guinode do
     temp = VimColorScheme::HighlightNode.new :Normal
-    temp.guifg '#ffffff'
-    temp.guibg '#000000'
+    temp.guifg '#00af00'
+    temp.guibg '#00afd7'
     temp.gui   :bold
     temp.to_s
   end
@@ -22,8 +22,8 @@ describe VimColorScheme::HighlightNode do
     temp = VimColorScheme::HighlightNode.new :Normal
     temp.ctermfg '34'
     temp.ctermbg '35'
-    temp.guifg '#ffffff'
-    temp.guibg '#000000'
+    temp.guifg '#00af00'
+    temp.guibg '#00afd7'
     temp.to_s
   end
 
@@ -41,8 +41,8 @@ describe VimColorScheme::HighlightNode do
   end
 
   it "should convert between gui and cterm colors correctly" do
-    guinode.should include('ctermfg=231')
-    guinode.should include('ctermbg=16')
+    guinode.should include('ctermfg=34')
+    guinode.should include('ctermbg=38')
   end
 
   it "should convert between cterm and gui colors correctly" do
@@ -53,8 +53,8 @@ describe VimColorScheme::HighlightNode do
   it 'should not convert colors if both are present' do
     bothnode.should include('ctermfg=34')
     bothnode.should include('ctermbg=35')
-    bothnode.should include('guifg=#ffffff')
-    bothnode.should include('guibg=#000000')
+    bothnode.should include('guifg=#00af00')
+    bothnode.should include('guibg=#00afd7')
   end
 
   it 'should correctly default nodes to none if no value is given' do
