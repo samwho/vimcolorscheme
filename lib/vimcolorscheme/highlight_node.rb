@@ -23,12 +23,20 @@ module VimColorScheme
     def process
       # Process colors. Set cterm if none, gui if none, based on their
       # counterparts.
+      if gui == [:none] and cterm != [:none]
+        gui(cterm)
+      end
+
       if guifg == :none and ctermfg != :none
         guifg Hex2Term.convert(ctermfg)
       end
 
       if guibg == :none and ctermbg != :none
         guibg Hex2Term.convert(ctermbg)
+      end
+
+      if cterm == [:none] and gui != [:none]
+        cterm(gui)
       end
 
       if ctermfg == :none and guifg != :none
