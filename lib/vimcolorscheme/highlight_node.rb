@@ -51,7 +51,7 @@ module VimColorScheme
       result += "guibg=#{attr_to_s(guibg)} "
       result += "cterm=#{attr_to_s(cterm)} "
       result += "ctermfg=#{attr_to_s(ctermfg)} "
-      result += "ctermbg=#{attr_to_s(ctermbg)} "
+      result += "ctermbg=#{attr_to_s(ctermbg)}\n"
     end
 
     # Converts an attribute to string. This accounts for cases such as :none and
